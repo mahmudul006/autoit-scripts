@@ -1,2 +1,4 @@
 *.exe
-*.logs
+*.log
+*.bat
+*.txt

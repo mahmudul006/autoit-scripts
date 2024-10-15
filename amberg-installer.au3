@@ -3,7 +3,7 @@ Func WaitForTextAndClick($windowTitle, $targetText, $timeout, $controlInstance)
     ConsoleWrite($windowTitle & @CRLF)
     For $i = 1 To $timeout
         If StringInStr(WinGetText($windowTitle), $targetText) > 0 Then
-            ConsoleWrite("in func waiting ")
+            ConsoleWrite("WaitForTextAndClick")
             ControlClick($windowTitle, "", $controlInstance)
             Return True
         EndIf
@@ -93,7 +93,6 @@ Sleep(5000) ; Wait for installer window
 
 ; Wait for the first installer window
 If WinWaitActive($windowTitle, "", 60) Then
-    ConsoleWrite("hi")
     SelectLanguage($windowTitle, $fullLanguageName)
     Sleep(2000)
     ControlClick($windowTitle, "", "[CLASS:AI_DirectUIWindow; INSTANCE:2]") ; Click first "Next" button
