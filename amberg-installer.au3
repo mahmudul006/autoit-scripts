@@ -75,8 +75,9 @@ Global $selectedLanguage = $CmdLine[1]
 Global $fullLanguageName = $languageMap.Item($selectedLanguage)
 Opt("WinTitleMatchMode", 2)
 Global $windowTitle = "Amberg Track Pro"
-
-Run("AmbergTrackProOffice_1.4.11.203.exe")
+;AmbergTrackProOffice_1.4.11.203
+Global $installerName = $CmdLine[2]
+Run($installerName)
 Sleep(5000)
 
 ; Wait for the first installer window
@@ -94,14 +95,14 @@ If WinWaitActive($windowTitle, "", 60) Then
     Sleep(2000)
 
     ; Step 2: Select prerequisites
-    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("select_prerequisites"), 60, "[CLASS:AI_DirectUIWindow; INSTANCE:3]") Then
+    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("select_prerequisites"), 120, "[CLASS:AI_DirectUIWindow; INSTANCE:3]") Then
         ConsoleWrite("The 'Select prerequisites to be installed' text did not appear." & @CRLF)
         Exit
     EndIf
     Sleep(2000)
 
     ; Step 3: License agreement
-    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("license_agreement"), 180, "[CLASS:AI_DirectUIWindow; INSTANCE:3]") Then
+    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("license_agreement"), 800, "[CLASS:AI_DirectUIWindow; INSTANCE:3]") Then
         ConsoleWrite("The 'License agreement' text did not appear." & @CRLF)
         Exit
     EndIf
@@ -109,7 +110,7 @@ If WinWaitActive($windowTitle, "", 60) Then
     ControlClick($windowTitle, "", "[CLASS:AI_DirectUIWindow; INSTANCE:4]")
 
     ; Step 4: Finish screen
-    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("finish"), 420, "[CLASS:AI_DirectUIWindow; INSTANCE:4]") Then
+    If Not WaitForTextAndClick($windowTitle, $languageStrings.Item($selectedLanguage).Item("finish"), 800, "[CLASS:AI_DirectUIWindow; INSTANCE:4]") Then
         ConsoleWrite("The 'Finish' text did not appear." & @CRLF)
         Exit
     EndIf
