@@ -1,4 +1,5 @@
 Func WaitForTextAndClick($windowTitle, $targetText, $timeout, $controlInstance)
+    WinActivate($windowTitle)
     ConsoleWrite($windowTitle & @CRLF)
     For $i = 1 To $timeout
         If StringInStr(WinGetText($windowTitle), $targetText) > 0 Then
